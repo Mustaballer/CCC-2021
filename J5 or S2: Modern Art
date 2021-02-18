@@ -1,0 +1,56 @@
+/* J5/S2: Modern Art
+      10/15
+      Next Steps: Faster and more optimized solution
+*/
+
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner s = new Scanner(System.in);
+    // dimensions
+    int m = s.nextInt();
+    s.nextLine();
+    int n = s.nextInt();
+    s.nextLine();
+
+    // k input lines
+    int k = s.nextInt();
+    s.nextLine();
+
+    // checkerboard set to 0
+    int[][] grid = new int[m][n];
+
+    // tracker of gold when equals to 1
+    int gold = 0;
+
+    for (int i = 0; i < k; i++) {
+      char CR = s.next().charAt(0);
+      int num = s.nextInt();
+      if (CR == 'C') {
+        for (int j = 0; j < m; j++) {
+          if (grid[j][num-1] == 0) {
+            grid[j][num-1] = 1;
+            gold++;
+          } else {
+            grid[j][num-1] = 0;
+            gold--;
+          }
+        }
+      } else if (CR == 'R') {
+        for (int j = 0; j < n; j++) {
+          if (grid[num-1][j] == 0) {
+            grid[num-1][j] = 1;
+            gold++;
+          } else {
+            grid[num-1][j] = 0;
+            gold--;
+          }
+        }
+      }
+    }
+
+    System.out.println(gold);
+
+  }
+}
